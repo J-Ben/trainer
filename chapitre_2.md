@@ -84,6 +84,33 @@ Les types de données spécifient le genre de valeurs que chaque attribut peut c
 - **DATES ET HEURES** : DATE, TIME, TIMESTAMP
 - **AUTRES TYPES** : BOOLEAN, BLOB (Binary Large Object), ENUM
 
+Voici une présentation des types de données courants en base de données sous forme de tableau avec des exemples :
+
+| Type de Données      | Description                                  | Exemple                       |
+|----------------------|----------------------------------------------|-------------------------------|
+| **Numériques**       |                                              |                               |
+| INTEGER              | Nombre entier                                | 42, -10, 1000                 |
+| DECIMAL              | Nombre décimal                               | 3.14, 0.005, -123.456         |
+| FLOAT                | Nombre à virgule flottante                   | 3.14159, -0.001, 1.0e6        |
+| DOUBLE               | Nombre à virgule flottante double précision | 3.141592653589793, 2.718281828459045 |
+| **Chaînes de Caractères** |                                         |                               |
+| VARCHAR              | Chaîne de caractères variable               | "Hello", "John Doe", "12345"   |
+| CHAR                 | Chaîne de caractères fixe                   | "ABC", "OpenAI", "987654321"   |
+| TEXT                 | Texte long                                  | "Lorem ipsum dolor sit amet, consectetur adipiscing elit." |
+| LONGTEXT             | Texte très long                             | "Long texte ... "             |
+| **Dates et Heures** |                                              |                               |
+| DATE                 | Date sans heure                             | 2024-06-25                    |
+| TIME                 | Heure sans date                             | 14:30:00                      |
+| TIMESTAMP            | Date et heure                               | 2024-06-25 14:30:00           |
+| DATETIME             | Date et heure                               | 2024-06-25 14:30:00           |
+| **Autres Types**     |                                              |                               |
+| BOOLEAN              | Valeur booléenne (Vrai/Faux)                | TRUE, FALSE                   |
+| BLOB                 | Objet binaire volumineux                    | Image, fichier audio          |
+| ENUM                 | Liste de valeurs autorisées                 | "Red", "Green", "Blue"        |
+| JSON                 | Format de données semi-structuré            | {"name": "John", "age": 30}   |
+
+Chaque type de données a un rôle spécifique dans le stockage des informations en base de données, offrant une grande flexibilité pour répondre aux besoins des applications.
+
 #### Exemple
 
 Table "Commandes" :
