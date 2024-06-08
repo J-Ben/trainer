@@ -1,211 +1,208 @@
-### Chapitre 1: Introduction générale
+# Chapitre 2: Le modèle relationnel
 
-#### 1.1. Historique et évolution des bases de données
+## 2.1. Introduction au modèle relationnel
 
-L'histoire des bases de données commence dans les années 1960, lorsque les entreprises et les institutions ont ressenti le besoin croissant de stocker et de gérer de grandes quantités d'informations de manière efficace et organisée. Les premiers systèmes de gestion de bases de données (SGBD) étaient très spécifiques et souvent intégrés directement dans les applications qu'ils servaient. Ces systèmes étaient généralement hiérarchiques ou en réseau.
+### Rappels
 
-Avec le temps, les systèmes de bases de données sont devenus plus génériques et plus puissants. Dans les années 1970, le modèle relationnel, introduit par Edgar F. Codd, a révolutionné la manière dont les données étaient stockées et manipulées. Ce modèle permettait de représenter les données sous forme de tables, offrant une flexibilité et une simplicité accrues par rapport aux modèles hiérarchiques et en réseau.
+Le modèle relationnel a été proposé par Edgar F. Codd en 1970 alors qu'il travaillait chez IBM. Ce modèle repose sur une structure de données basée sur des tables (ou relations) pour représenter les données et leurs relations. Avant le modèle relationnel, les bases de données étaient principalement hiérarchiques ou en réseau, ce qui rendait les relations entre les données plus complexes et moins flexibles.
 
-**Exemple** : Imaginons une bibliothèque universitaire dans les années 1960 qui devait suivre les emprunts de livres. Initialement, cela aurait pu être fait avec des cartes en papier. Un SGBD rudimentaire aurait permis de créer une base de données électronique pour stocker les informations des étudiants et les livres empruntés. Par exemple, un système comme IMS (Information Management System) d'IBM permettait de structurer et de gérer ces informations de manière plus efficace.
+#### Exemple
 
-**Exercice** : Recherchez des informations sur les premiers SGBD, tels que IMS (Information Management System) d'IBM. Quels étaient leurs avantages et leurs inconvénients par rapport aux systèmes modernes? Rédigez un court rapport comparatif.
+Considérons une base de données d'une bibliothèque :
 
-#### 1.2. Du passage des systèmes de fichiers aux SGBD
+- **Table "Livres"** : contient les informations sur les livres.
+  - Colonnes : ID, Titre, Auteur, Genre, Date de publication
+- **Table "Auteurs"** : contient les informations sur les auteurs.
+  - Colonnes : ID, Nom, Prénom, Date de naissance
 
-Les systèmes de fichiers traditionnels étaient utilisés pour stocker des données dans des fichiers séparés. Chaque fichier contenait des données relatives à une application ou à une partie d'une application. Cependant, ces systèmes avaient plusieurs inconvénients :
+*Exemple de données pour la table "Livres"* :
 
-- **Redondance et incohérence des données** : Les mêmes données pouvaient être stockées dans plusieurs fichiers, ce qui entraînait des duplications et des incohérences.
-- **Difficulté de gestion des données** : Chaque application devait gérer ses propres fichiers, ce qui compliquait l'accès et la mise à jour des données.
-- **Absence de standardisation** : Les formats de fichiers variaient d'une application à l'autre, rendant difficile l'intégration et l'interopérabilité.
-- **Manque de sécurité et de contrôle d'accès** : Les systèmes de fichiers ne fournissaient pas de mécanismes robustes pour contrôler l'accès aux données.
+| ID  | Titre                  | Auteur        | Genre       | Date de publication |
+|-----|------------------------|---------------|-------------|---------------------|
+| 1   | "1984"                 | George Orwell | Fiction     | 1949                |
+| 2   | "To Kill a Mockingbird"| Harper Lee    | Fiction     | 1960                |
 
-Les systèmes de gestion de bases de données (SGBD) ont été développés pour surmonter ces limitations. Ils offrent une interface commune pour gérer et accéder aux données, tout en assurant l'intégrité, la cohérence, et la sécurité des données.
+### Concepts de base (tables, lignes, colonnes)
 
-**Avantages des SGBD** :
-- **Réduction de la redondance et de l'incohérence** : Les SGBD centralisent les données, réduisant ainsi la duplication et assurant la cohérence.
-- **Gestion facilitée des données** : Les SGBD offrent des outils pour gérer les données de manière centralisée, simplifiant l'accès et les mises à jour.
-- **Standardisation** : Les SGBD utilisent des formats standardisés, facilitant l'intégration et l'interopérabilité.
-- **Sécurité et contrôle d'accès** : Les SGBD fournissent des mécanismes robustes pour contrôler l'accès aux données et protéger la confidentialité.
+- **Table** : Représente une relation dans la base de données. Elle est constituée de lignes et de colonnes.
+- **Ligne** : Aussi appelée n-uplet ou enregistrement, représente une instance de la relation.
+- **Colonne** : Aussi appelée attribut, représente une propriété de la relation.
 
-**Inconvénients des SGBD** :
-- **Coût** : Les SGBD peuvent être coûteux à mettre en place et à maintenir.
-- **Complexité** : Les SGBD peuvent être complexes à administrer, nécessitant des compétences spécialisées.
-- **Performances** : Les SGBD peuvent être moins performants pour certaines applications spécifiques en raison de leur complexité et de la surcharge de gestion.
+#### Exemple
 
-**Exemple** : Considérons un système de gestion des employés. Dans un système de fichiers, les informations des employés pourraient être réparties dans plusieurs fichiers (par exemple, un fichier pour les informations personnelles, un autre pour les informations salariales). Avec un SGBD, toutes ces informations peuvent être centralisées dans une base de données, réduisant ainsi la redondance et facilitant la gestion des données.
+Table "Étudiants" avec les colonnes ID, Nom, Prénom, Date de naissance.
 
-**Exercice** : Comparez les avantages et les inconvénients des systèmes de fichiers et des SGBD dans le contexte d'une entreprise de vente au détail. Rédigez un court rapport expliquant pourquoi une entreprise pourrait préférer utiliser un SGBD plutôt qu'un système de fichiers.
+| ID  | Nom      | Prénom  | Date de naissance |
+|-----|----------|---------|-------------------|
+| 1   | Dupont   | Jean    | 1995-05-20        |
+| 2   | Martin   | Sophie  | 1993-07-15        |
 
-#### 1.3. Types de systèmes de gestion de bases de données (SGBD)
+#### Exercices
 
-Il existe plusieurs types de SGBD, chacun ayant ses propres caractéristiques et étant adapté à différents types d'applications :
+1. **Exercice 1** : Dessinez un diagramme de relations pour une base de données de gestion de cours incluant les tables "Cours", "Étudiants", et "Inscriptions". Indiquez les clés primaires et les clés étrangères.
+2. **Exercice 2** : Définissez un schéma de relation pour une table "Employés" dans une entreprise, incluant au moins cinq attributs différents (par exemple, ID, Nom, Prénom, Poste, Salaire).
 
-1. **SGBD hiérarchiques** :
-   - Les données sont organisées en une structure arborescente.
-   - Chaque enregistrement a un parent et peut avoir plusieurs enfants.
-   - **Avantages** : Accès rapide aux données, structure simple.
-   - **Inconvénients** : Difficulté de modification de la structure, redondance des données.
-   - **Exemple** : IMS (Information Management System) d'IBM.
+## 2.2. Structure des données relationnelles
 
-2. **SGBD en réseau** :
-   - Les données sont organisées en une structure de graphe.
-   - Les enregistrements peuvent avoir plusieurs parents et enfants.
-   - **Avantages** : Flexibilité accrue par rapport aux SGBD hiérarchiques.
-   - **Inconvénients** : Complexité de gestion, difficultés de mise à jour.
-   - **Exemple** : IDMS (Integrated Database Management System).
+### Schéma de relation
 
-3. **SGBD relationnels** :
-   - Les données sont organisées en tables, avec des lignes et des colonnes.
-   - Les relations entre les tables sont établies via des clés primaires et étrangères.
-   - **Avantages** : Flexibilité, normalisation, facilité d'utilisation.
-   - **Inconvénients** : Performance moins optimale pour certaines applications spécifiques.
-   - **Exemple** : MySQL, PostgreSQL, Oracle.
+Le schéma de relation définit la structure d'une table, incluant ses attributs et leurs types de données. Il décrit comment les données sont organisées et les relations entre elles.
 
-4. **SGBD orientés objet** :
-   - Les données sont représentées sous forme d'objets, comme dans la programmation orientée objet.
-   - Les objets peuvent contenir des données et des méthodes.
-   - **Avantages** : Modélisation naturelle des données complexes, réutilisabilité du code.
-   - **Inconvénients** : Complexité, courbe d'apprentissage plus élevée.
-   - **Exemple** : db4o, ObjectDB.
+#### Exemple
 
-5. **SGBD NoSQL** :
-   - Les données sont stockées dans des formats non relationnels (documents, colonnes, clés-valeurs, graphes).
-   - Adaptés aux grandes quantités de données non structurées.
-   - **Avantages** : Scalabilité, flexibilité, performance pour les applications web et les big data.
-   - **Inconvénients** : Manque de normalisation, intégrité des données plus difficile à assurer.
-   - **Exemple** : MongoDB, Cassandra, Redis.
+Table "Produits" :
 
-**Exemple** : Imaginons une entreprise de construction de maisons. Un SGBD relationnel pourrait être utilisé pour gérer les informations sur les clients, les projets de construction, et les employés. Les relations entre les tables permettraient de lier les clients aux projets, et les projets aux employés responsables.
+- ID (INTEGER)
+- Nom (VARCHAR)
+- Prix (DECIMAL)
+- Date d'ajout (DATE)
 
-**Exercice** : Identifiez les types de SGBD qui seraient les plus appropriés pour les scénarios suivants : une application bancaire, un réseau social, et un système de gestion d'inventaire pour un grand magasin. Justifiez votre choix pour chaque scénario.
+### Domaines et types de données
+Le domaine d'un attribut dans une base de données définit l'ensemble des valeurs autorisées pour cet attribut. Cela permet de restreindre les données pouvant être stockées dans une colonne donnée, assurant ainsi l'intégrité et la cohérence des données.
 
-#### 1.4. Concepts fondamentaux des bases de données
+Voici quelques points importants à retenir sur les domaines en base de données :
 
-Une base de données est une collection organisée de données, stockée et accessible électroniquement. Les composants principaux sont les tables (ou relations), les lignes (ou enregistrements), les colonnes (ou champs), et les relations entre les tables.
+1. **Définition du Domaine** : Chaque attribut d'une table est associé à un domaine qui spécifie le type de données pouvant être stocké dans cette colonne. Par exemple, une colonne "Âge" peut avoir un domaine de type INTEGER pour ne stocker que des nombres entiers.
 
-- **Tables** : Une table est une collection de données organisées en lignes et colonnes. Chaque table représente une entité dans la base de données.
-- **Lignes** : Une ligne, ou enregistrement, contient des informations sur un élément spécifique de l'entité représentée par la table.
-- **Colonnes** : Une colonne, ou champ, représente un attribut de l'entité et contient une valeur pour chaque enregistrement.
-- **Relations** : Les relations entre les tables sont établies à l'aide de clés primaires et étrangères pour lier les données de manière logique.
+2. **Contraintes de Domaine** : Les domaines peuvent inclure des contraintes pour limiter les valeurs acceptables. Par exemple, une colonne "Genre" peut avoir un domaine restreint aux valeurs "Homme" ou "Femme", assurant ainsi que seules ces deux options peuvent être stockées.
 
-**Exemple 1** : Considérons une base de données pour une école. Une table "Étudiants" pourrait contenir les colonnes ID, Nom, Prénom, Date de naissance, et Classe. Une table "Cours" pourrait contenir les colonnes ID, Nom du cours, et Professeur. Une table "Inscriptions" pourrait lier les deux premières tables en associant les étudiants aux cours qu'ils suivent. Voici une représentation simple :
+3. **Types de Données** : Les domaines peuvent être associés à différents types de données, tels que INTEGER, VARCHAR, DATE, etc. Chaque type de données a ses propres règles et restrictions quant aux valeurs qu'il peut contenir.
 
-| ID | Nom     | Prénom | Date de naissance | Classe |
-|----|---------|--------|-------------------|--------|
-| 1  | Dupont  | Jean   | 2005-04-12        | 5A     |
-| 2  | Martin  | Marie  | 2006-07-23        | 5B     |
+4. **Gestion des Erreurs** : Lorsqu'une valeur enfreint les contraintes de domaine, le système de gestion de base de données (SGBD) peut générer une erreur ou appliquer une action spécifiée, comme rejeter la valeur ou la remplacer par une valeur par défaut.
 
-| ID | Nom du cours | Professeur |
-|----|--------------|------------|
-| 1  | Mathématiques | M. Durand |
-| 2  | Français      | Mme. Leroy |
+5. **Uniformité des Données** : En définissant des domaines appropriés pour chaque attribut, il est possible de garantir que les données stockées dans une colonne donnée sont cohérentes et uniformes, ce qui facilite la manipulation et l'analyse ultérieure de ces données.
 
-| ID étudiant | ID cours |
-|-------------|----------|
-| 1           | 1        |
-| 2           | 2        |
+6. **Exemple** : Pour une colonne "Code Postal", le domaine peut être défini comme VARCHAR(10) pour accepter des chaînes de caractères de longueur maximale 10, correspondant aux codes postaux. Les contraintes peuvent également spécifier un format spécifique pour les codes postaux, comme "XXXXX" pour les codes postaux américains à 5 chiffres.
+
+En résumé, les domaines jouent un rôle crucial dans la définition et la gestion des types de données en base de données, contribuant à assurer l'intégrité, la cohérence et la qualité des données stockées.
 
 
-**Exemple 2** : Pour une entreprise de construction de maisons, la base de données pourrait inclure :
-- Une table "Clients" contenant les colonnes ID, Nom, Prénom, Adresse, et Numéro de téléphone.
-- Une table "Projets" contenant les colonnes ID, Nom du projet, Adresse du chantier, et Date de début.
-- Une table "Employés" contenant les colonnes ID, Nom, Prénom, Poste, et Salaire.
-- Une table "Attributions" pour gérer les affectations d'employés à des projets, contenant les colonnes ID, ID de l'employé, ID du projet, et Date d'affectation.
+Les types de données spécifient le genre de valeurs que chaque attribut peut contenir. Les types de données courants incluent :
 
-| ID | Nom     | Prénom | Adresse            | Numéro de téléphone |
-|----|---------|--------|--------------------|---------------------|
-| 1  | Duval   | Pierre | 123 Rue de la Paix | 0123456789          |
-| 2  | Lefèvre | Anne   | 456 Avenue des Champs | 0987654321        |
+- **NUMÉRIQUES** : INTEGER, DECIMAL, FLOAT
+- **CHAÎNES DE CARACTÈRES** : VARCHAR, CHAR, TEXT
+- **DATES ET HEURES** : DATE, TIME, TIMESTAMP
+- **AUTRES TYPES** : BOOLEAN, BLOB (Binary Large Object), ENUM
 
-| ID | Nom du projet | Adresse du chantier      | Date de début |
-|----|---------------|--------------------------|---------------|
-| 1  | Maison A      | 789 Boulevard Victor Hugo | 2023-01-10    |
-| 2  | Maison B      | 101 Rue de Rivoli         | 2023-02-15    |
+#### Exemple
 
-| ID | Nom     | Prénom | Poste         | Salaire |
-|----|---------|--------|---------------|---------|
-| 1  | Martin  | Luc    | Maçon         | 2500    |
-| 2  | Petit   | Claire | Électricien   | 2200    |
+Table "Commandes" :
 
-| ID | ID de l'employé | ID du projet | Date d'affectation |
-|----|-----------------|--------------|--------------------|
-| 1  | 1               | 1            | 2023-01-12         |
-| 2  | 2               | 2            | 2023-02-16         |
+| ID  | Client   | Date de commande | Total     | Payée |
+|-----|----------|------------------|-----------|-------|
+| 1   | Dupont   | 2024-01-15       | 150.75    | TRUE  |
+| 2   | Martin   | 2024-01-20       | 75.50     | FALSE |
 
-#### 1.5. Avantages des bases de données relationnelles
+#### Exercices
 
-Les bases de données relationnelles offrent plusieurs avantages clés :
+1. **Exercice 1** : Créez le schéma pour une table "Ventes" dans une base de données de magasin, incluant les types de données appropriés pour chaque attribut.
+2. **Exercice 2** : Définissez un schéma de relation pour une table "Patients" dans une base de données hospitalière avec au moins cinq attributs différents, incluant différents types de données (INTEGER, VARCHAR, DATE, BOOLEAN, etc.).
 
-- **Intégrité des données** : Assure que les données sont précises et cohérentes.
-- **Réduction de la redondance** : Minimise la duplication des données grâce à la normalisation.
-- **Flexibilité** : Permet des requêtes complexes pour extraire et manipuler les données.
-- **Sécurité** : Fournit des mécanismes pour contrôler l'accès aux données et protéger la confidentialité.
+## 2.3. Contraintes d'intégrité
 
-**Exemple** : Dans une base de données relationnelle pour une bibliothèque, les informations sur les livres empruntés ne sont stockées qu'une seule fois, et toutes les autres tables se réfèrent à cette information via des clés étrangères, réduisant ainsi la redondance.
+### Contraintes d'entité
 
-**Exercice** : Identifiez les avantages des bases de données relationnelles dans un contexte médical, par exemple, pour la gestion des dossiers des patients. Décrivez comment la normalisation peut améliorer la précision et la cohérence des données.
+Les contraintes d'entité assurent que chaque enregistrement dans une table est unique. La clé primaire est un exemple de contrainte d'entité.
 
-### QCM Chapitre 1
+#### Exemple
 
-1. Quel est le principal avantage des bases de données relationnelles?
-   a) Réduction de la sécurité  
-   b) Augmentation de la redondance  
-   c) Flexibilité des requêtes  
-   d) Difficulté de mise en œuvre  
+Dans la table "Clients", l'ID client doit être unique pour chaque enregistrement.
 
-2. Quel composant de base de données stocke les enregistrements?  
-   a) Tables  
-   b) Colonnes  
-   c) Lignes  
-   d) Relations  
+### Contraintes de domaine
 
-3. Qui a introduit le modèle relationnel?  
-   a) Edgar F. Codd  
-   b) Charles Bachman  
-   c) Bill Gates  
-   d) Larry Ellison  
+Les contraintes de domaine limitent les valeurs que les attributs peuvent prendre. Elles assurent que les données respectent certaines règles définies.
 
-4. Quel est le rôle d'une clé primaire?  
-   a) Créer une copie des données  
-   b) Assurer l'unicité des enregistrements  
-   c) Relier différentes bases de données  
-   d) Définir les types de données  
+#### Exemple
 
-5. Quelle est la principale caractéristique des données en 1NF?  
-   a) Atomicité  
-   b) Redondance  
-   c) Intégrité  
-   d) Durabilité  
+Dans la table "Employés", le salaire doit être un nombre positif.
 
-6. Les SGBD des années 1960 étaient souvent:  
-   a) Très génériques  
-   b) Spécifiques aux applications  
-   c) Basés sur des réseaux  
-   d) Inutilisés  
+### Contraintes de clé primaire et étrangère
 
-7. Qu'est-ce que SQL signifie?  
-   a) Structured Query Language  
-   b) Sequential Query Language  
-   c) Simple Query Language  
-   d) Secure Query Language  
+- **Clé primaire** : Assure l'unicité des enregistrements dans une table.
+- **Clé étrangère** : Établit une relation entre deux tables en référant la clé primaire d'une autre table.
 
-8. Une base de données est une collection de:  
-   a) Programmes  
-   b) Algorithmes  
-   c) Données organisées  
-   d) Fichiers PDF  
+#### Exemple
 
-9. Quel type de données pourrait être stocké dans une colonne BOOLEAN?  
-   a) Texte  
-   b) Numéros  
-   c) Vrai/Faux  
-   d) Dates  
+Table "Inscriptions" :
 
-10. La normalisation des bases de données vise à:  
-    a) Augmenter la redondance  
-    b) Diminuer l'intégrité  
-    c) Réduire la duplication  
-    d) Simplifier les requêtes  
+| ID | Étudiant_ID (FK) | Cours_ID (FK) |
+|----|------------------|---------------|
+| 1  | 1                | 101           |
+| 2  | 2                | 102           |
 
----
- 
+Ici, Étudiant_ID et Cours_ID sont des clés étrangères référant respectivement les clés primaires des tables "Étudiants" et "Cours".
+
+### Risques liés à la non prise en compte des contraintes d'intégrité
+
+Ne pas respecter les contraintes d'intégrité peut entraîner :
+
+- **Incohérences dans les données** : Par exemple, des entrées dupliquées pour des clients.
+- **Données invalides** : Par exemple, des valeurs de salaire négatives ou des dates incorrectes.
+- **Références brisées** : Par exemple, des clés étrangères pointant vers des enregistrements inexistants, ce qui rend difficile le maintien de la cohérence des données entre les tables.
+
+#### Exercices
+
+1. **Exercice 1** : Imaginez une table "Factures" avec une contrainte de clé étrangère reliant l'ID du client de la table "Clients". Expliquez comment cela assure l'intégrité des données.
+2. **Exercice 2** : Définissez des contraintes de domaine pour une table "Produits" où le prix doit être supérieur à zéro et la quantité en stock doit être un entier positif.
+
+## QCM de fin de chapitre
+
+1. Qui a développé le modèle relationnel ?
+    - a) Charles Bachman
+    - b) Bill Gates
+    - c) Edgar F. Codd
+    - d) Larry Ellison
+
+2. Quelle est la principale structure de données dans le modèle relationnel ?
+    - a) Graphes
+    - b) Arbres
+    - c) Tables
+    - d) Listes chaînées
+
+3. Quel terme décrit une ligne dans une table relationnelle ?
+    - a) Attribut
+    - b) Tuple
+    - c) Domaine
+    - d) Clé
+
+4. Une clé primaire assure :
+    - a) La duplication des enregistrements
+    - b) L'unicité des enregistrements
+    - c) La suppression des enregistrements
+    - d) La modification des enregistrements
+
+5. Quelle contrainte assure que les valeurs d'un attribut sont valides ?
+    - a) Contrainte de domaine
+    - b) Contrainte d'entité
+    - c) Clé primaire
+    - d) Clé étrangère
+
+6. Les attributs d'une table sont également connus sous le nom de :
+    - a) Lignes
+    - b) Colonnes
+    - c) Tuples
+    - d) Relations
+
+7. Une clé étrangère :
+    - a) Est toujours unique
+    - b) Relie deux tables
+    - c) Est toujours vide
+    - d) Est une contrainte de domaine
+
+8. Une table "Clients" avec une clé primaire sur l'ID client garantit :
+    - a) Que chaque client a un identifiant unique
+    - b) Que les clients peuvent partager des identifiants
+    - c) Que les identifiants sont séquentiels
+    - d) Que les identifiants sont aléatoires
+
+9. Les données relationnelles sont stockées sous forme de :
+    - a) Documents
+    - b) Graphes
+    - c) Tables
+    - d) Listes
+
+10. Une contrainte d'intégrité garantit :
+    - a) La redondance des données
+    - b) La cohérence des données
+    - c) La perte des données
+    - d) La duplication des données
