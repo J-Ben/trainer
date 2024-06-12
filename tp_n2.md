@@ -54,53 +54,7 @@ Vous êtes chargé de la conception d'un système de gestion pour une nouvelle v
 
 4. **Algèbre Relationnelle**
    - Formulez au moins 5 requêtes en algèbre relationnelle par table. Utilisez un langage naturel pour les formuler.
-
-#### Exercice de Sélection
-
-1. **Table Tramways**
-   - On souhaite connaître tous les tramways en opération sur la ligne 1.
-   - Affichez les tramways nécessitant un entretien dans le mois à venir.
-   - Listez tous les tramways avec plus de 10 ans d'âge.
-   - Affichez les tramways conduits par le conducteur 'John Doe'.
-   - Listez les tramways qui ont été en service pendant les 5 dernières années sur plus de deux lignes différentes.
-
-2. **Table Lignes**
-   - Affichez toutes les lignes qui ont au moins 10 arrêts.
-   - On souhaite connaître la longueur totale des lignes en opération.
-   - Affichez les lignes desservies par les tramways fabriqués après 2015.
-   - Listez toutes les lignes qui passent par l'arrêt 'Central Station'.
-   - Affichez les lignes qui ont une fréquence de passage de moins de 10 minutes aux heures de pointe.
-
-3. **Table Arrêts**
-   - Affichez tous les arrêts desservis par plus de 3 lignes différentes.
-   - On souhaite connaître les arrêts les plus fréquentés aux heures de pointe.
-   - Listez les arrêts situés dans le quartier 'Downtown'.
-   - Affichez les arrêts qui ont été ajoutés dans les deux dernières années.
-   - Listez les arrêts où le tramway n° 5 s'arrête.
-
-4. **Table Conducteurs**
-   - Affichez les conducteurs qui conduisent plus de deux tramways différents.
-   - On souhaite connaître les conducteurs avec plus de 10 ans d'expérience.
-   - Listez les conducteurs qui ont travaillé sur la ligne 1 en janvier 2024.
-   - Affichez les conducteurs dont le permis expire dans les 6 mois.
-   - Listez les conducteurs qui ont conduit le tramway 'T123' au moins une fois.
-
-5. **Table Tickets**
-   - Affichez les tickets vendus pour le trajet entre 'Central Station' et 'West End'.
-   - On souhaite connaître le nombre de tickets vendus par jour pour la ligne 2.
-   - Listez tous les tickets achetés par le passager 'Alice Johnson'.
-   - Affichez les tickets dont le tarif est supérieur à 10 unités.
-   - Listez les tickets achetés dans les 24 heures précédant un jour férié.
-
-6. **Table Passagers**
-   - Affichez les passagers qui ont acheté plus de 10 tickets le mois dernier.
-   - On souhaite connaître les passagers qui utilisent régulièrement la ligne 3.
-   - Listez les passagers qui ont des abonnements mensuels.
-   - Affichez les passagers ayant des tickets pour des trajets sur plusieurs lignes.
-   - Listez les passagers qui ont acheté des tickets pour le trajet 'Downtown' à 'Airport'.
-
----
-
+ 
 ### Exercice d'Algèbre Relationnelle
 
 Formulez les requêtes suivantes en algèbre relationnelle pour chaque table mentionnée.
